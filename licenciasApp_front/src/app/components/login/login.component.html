@@ -1,0 +1,23 @@
+<div style="width: 100vw; height: 100vh; background: #EEEEEE; display: flex; justify-content: center; align-items: center;">
+  <mat-card style="width: 500px; height: 700px; display: flex; justify-content: space-around; align-items: center; flex-direction: column; padding-top: 20px;">
+      <mat-card-header style="display: flex; justify-content: center; align-items: center; flex-direction: column-reverse; gap: 20px;">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="account_circle" style="font-size: 100px; width: 100px; height: 100px;"></mat-icon>
+          <mat-card-title style="font-size: 30px;">Iniciar sesión</mat-card-title>
+      </mat-card-header>
+      <mat-card-content style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 20px;">
+          <form style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <mat-form-field style="width: 300px;">
+              <mat-label>Usuario</mat-label>
+              <input matInput [(ngModel)]="username" name="username" placeholder="Usuario" />
+            </mat-form-field>
+
+             <mat-form-field style="width: 300px;">
+              <mat-label>Contraseña</mat-label>
+              <input matInput [(ngModel)]="password" name="password" placeholder="Contraseña" type="password" />
+            </mat-form-field>
+          </form>
+          <button mat-flat-button style="height: 50px; width: 200px; font-size: 20px;" (click)="login()">Iniciar sesión</button>
+          <button mat-flat-button style="height: 50px; width: 200px; font-size: 20px;">Registrarse</button>
+      </mat-card-content>
+    </mat-card>
+</div>
