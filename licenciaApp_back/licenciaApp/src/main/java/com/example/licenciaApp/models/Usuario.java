@@ -1,9 +1,8 @@
-package models;
+package com.example.licenciaApp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Usuario {
@@ -12,21 +11,50 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private String nombre;
+    private String usuario;
+    private String password;
+    private Boolean superUsuario = false;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Solicitud> solicitudes;
 
     public Long getId() {
         return id;
-    }
-
-    public String getNombre() {
-        return nombre;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Boolean getSuperUsuario() {
+        return superUsuario;
+    }
+
+    public void setSuperUsuario(Boolean superUsuario) {
+        this.superUsuario = superUsuario;
+    }
+
+    public List<Solicitud> getSolicitudes() {
+        return solicitudes;
+    }
+
+    public void setSolicitudes(List<Solicitud> solicitudes) {
+        this.solicitudes = solicitudes;
     }
 }
