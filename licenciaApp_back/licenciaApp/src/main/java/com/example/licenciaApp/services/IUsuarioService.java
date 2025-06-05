@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IUsuarioService {
 
-    public void crearUsuario(Usuario usuario);
+    public String crearUsuario(Usuario usuario);
 
     public Usuario buscarUsuario(String usuario, String password);
 

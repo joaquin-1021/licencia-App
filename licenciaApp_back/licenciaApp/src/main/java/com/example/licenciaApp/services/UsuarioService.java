@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService implements IUsuarioService {
@@ -15,14 +16,22 @@ public class UsuarioService implements IUsuarioService {
     private UsuarioRepository repository;
 
     @Override
-    public void crearUsuario(Usuario usuario) {
-        repository.save(usuario);
+    public String crearUsuario(Usuario usuario) {
+
+        Optional<Usuario> aux = repository.findByUsuario(usuario.getUsuario());
+
+        if (aux.isPresent()) return "Ya existe ese usuario";
+        else {
+            repository.save(usuario);
+            return "Usuario creado";
+        }
+
     }
 
     @Override
     public Usuario buscarUsuario(String usuario, String password) {
-        Usuario user = repository.findByUsuario(usuario);
-        if (user != null && user.getPassword().equals(password)) return user;
+        Optional<Usuario> user = repository.findByUsuario(usuario);
+        if (user.isPresent() && user.get().getPassword().equals(password)) return user.get();
         else return null;
     }
 

@@ -4,6 +4,10 @@ import com.example.licenciaApp.models.Titular;
 
 public interface ITitularService {
 
-    public void crearTitular(Titular titular);
+    public String crearTitular(Titular titular);
+
+    public Titular buscarTitular(Integer nroDocumento);
+
+    public void modificarTitular(Titular titular);
 
 }
