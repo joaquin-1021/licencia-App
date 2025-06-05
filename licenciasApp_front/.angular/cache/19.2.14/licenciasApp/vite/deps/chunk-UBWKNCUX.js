@@ -1,6 +1,6 @@
 import {
   isPlatformBrowser
-} from "./chunk-4XE3LB5G.js";
+} from "./chunk-SLZMMFEY.js";
 import {
   ApplicationRef,
   ElementRef,
@@ -13,20 +13,7 @@ import {
   inject,
   setClassMetadata,
   ɵɵdefineInjectable
-} from "./chunk-BF3C3RBX.js";
-
-// node_modules/@angular/cdk/fesm2022/backwards-compatibility-DHR38MsD.mjs
-function _bindEventWithOptions(renderer, target, eventName, callback, options) {
-  const major = parseInt(VERSION.major);
-  const minor = parseInt(VERSION.minor);
-  if (major > 19 || major === 19 && minor > 0 || major === 0 && minor === 0) {
-    return renderer.listen(target, eventName, callback, options);
-  }
-  target.addEventListener(eventName, callback, options);
-  return () => {
-    target.removeEventListener(eventName, callback, options);
-  };
-}
+} from "./chunk-A6MXQDG5.js";
 
 // node_modules/@angular/cdk/fesm2022/platform-DmdVEw_C.mjs
 var hasV8BreakIterator;
@@ -88,6 +75,19 @@ var Platform = class _Platform {
     }]
   }], () => [], null);
 })();
+
+// node_modules/@angular/cdk/fesm2022/backwards-compatibility-DHR38MsD.mjs
+function _bindEventWithOptions(renderer, target, eventName, callback, options) {
+  const major = parseInt(VERSION.major);
+  const minor = parseInt(VERSION.minor);
+  if (major > 19 || major === 19 && minor > 0 || major === 0 && minor === 0) {
+    return renderer.listen(target, eventName, callback, options);
+  }
+  target.addEventListener(eventName, callback, options);
+  return () => {
+    target.removeEventListener(eventName, callback, options);
+  };
+}
 
 // node_modules/@angular/cdk/fesm2022/element-x4z00URv.mjs
 function coerceNumberProperty(value, fallbackValue = 0) {
@@ -153,10 +153,10 @@ var _CdkPrivateStyleLoader = class __CdkPrivateStyleLoader {
 })();
 
 export {
-  _bindEventWithOptions,
   Platform,
+  _bindEventWithOptions,
   coerceNumberProperty,
   coerceElement,
   _CdkPrivateStyleLoader
 };
-//# sourceMappingURL=chunk-K5LE2JWH.js.map
+//# sourceMappingURL=chunk-UBWKNCUX.js.map

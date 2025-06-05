@@ -1,13 +1,146 @@
-<div style="width: 100vw; height: 100vh; background: #EEEEEE; display: flex; justify-content: center; align-items: center;">
-  <mat-card class="login-card">
-      <mat-card-header style="display: flex; justify-content: center; align-items: center; flex-direction: column-reverse; gap: 20px;">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="account_circle" style="font-size: 100px; width: 100px; height: 100px;"></mat-icon>
-          <mat-card-title style="font-size: 30px;">Iniciar sesión</mat-card-title>
-      </mat-card-header>
-      <mat-card-content style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 20px;">
-          <form style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-        
-          </form>
-      </mat-card-content>
-    </mat-card>
+<div
+  style="
+    width: 100vw;
+    height: 100vh;
+    background: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <mat-card
+    class="login-card"
+    style="max-width: 800px; width: 100%"
+  >
+    <mat-toolbar
+      style="
+        background-color: #015cbb;
+        color: white;
+        width: 100%;
+        margin-bottom: 30px;
+      "
+    >
+      <span>Alta titular</span>
+    </mat-toolbar>
+
+    <mat-card-content style="display: flex; flex-direction: column; gap: 20px">
+      <form
+        style="display: flex; flex-direction: column; gap: 20px; width: 100%"
+        [formGroup]="formTitular"
+      >
+        <div style="display: flex; gap: 20px; width: 100%">
+          <mat-form-field appearance="fill" style="flex: 1">
+            <mat-label>Nombre</mat-label>
+            <input matInput name="Nombre" placeholder="Ingrese su nombre" formControlName="nombre"/>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="flex: 1">
+            <mat-label>Apellido</mat-label>
+            <input matInput name="Apellido" placeholder="Ingrese su apellido" formControlName="apellido"/>
+          </mat-form-field>
+        </div>
+
+        <div style="display: flex; gap: 20px; width: 100%">
+          <mat-form-field appearance="fill" style="flex: 1.8">
+            <mat-label>Tipo de Documento</mat-label>
+            <mat-select name="tipodocumento" placeholder="Tipo de Documento" formControlName="tipoDocumento">
+              <mat-option value="DNI">Dni</mat-option>
+              <mat-option value="Cedula">Cédula</mat-option>
+              <mat-option value="Pasaporte">Pasaporte</mat-option>
+              <mat-option value="Civica">Cívica</mat-option>
+              <mat-option value="Enrolamiento">Enrolamiento</mat-option>
+              <mat-option value="Embarque">Embarque</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="flex: 1.8">
+            <mat-label>Número de Documento</mat-label>
+            <input
+              matInput
+              name="nrodocumento"
+              placeholder="Ingrese su número de documento"
+              formControlName="nroDocumento"
+            />
+          </mat-form-field>
+        </div>
+
+        <div style="display: flex; gap: 20px; width: 100%">
+          <mat-form-field appearance="fill" style="flex: 1.2">
+            <mat-label>Fecha de Nacimiento</mat-label>
+            <input
+              matInput
+              name="fechaNacimiento"
+              placeholder="DD/MM/AAAA"
+              type="date"
+              formControlName="fechaNacimiento"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="flex: 2">
+            <mat-label>Dirección</mat-label>
+            <input
+              matInput
+              name="direccion"
+              placeholder="Ingrese su dirección"
+              formControlName="direccion"
+            />
+          </mat-form-field>
+        </div>
+
+        <div style="display: flex; gap: 20px; width: 100%">
+          <mat-form-field appearance="fill" style="flex: 1">
+            <mat-label>Donante de órganos</mat-label>
+            <mat-select
+              name="donanteDeOrganos"
+              placeholder="Donante de órganos"
+              formControlName="donante"
+            >
+              <mat-option value="Si">Sí</mat-option>
+              <mat-option value="No">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="flex: 1">
+            <mat-label>Grupo Sanguíneo</mat-label>
+            <input
+              matInput
+              name="grupoSanguineo"
+              placeholder="Ej: A+, B-, O+"
+              formControlName="grupoSangre"
+            />
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card-content>
+
+    <div
+      style="
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        margin-top: 30px;
+        margin-bottom: 30px;
+      "
+    >
+      <button
+        mat-flat-button
+        color="primary"
+        style="height: 40px; width: 100px"
+        (click)="onSubmit()"
+      >
+        Aceptar
+      </button>
+      <button
+        mat-flat-button
+        style="
+          height: 40px;
+          width: 100px;
+          background-color: #9c0000;
+          color: white;
+        "
+      >
+        Cancelar
+      </button>
+    </div>
+  </mat-card>
 </div>
