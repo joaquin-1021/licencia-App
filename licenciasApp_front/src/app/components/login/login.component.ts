@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIcon } from '@angular/material/icon';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -26,9 +27,10 @@ export class LoginComponent {
   username = '';
   password = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login() {
+    this.router.navigate(['/menu']);
     const url = `152.170.128.205:8080/usuario/login?nombre=${this.username}&password=${this.password}`;
     console.log(url);
 

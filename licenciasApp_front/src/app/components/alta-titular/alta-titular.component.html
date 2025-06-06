@@ -1,3 +1,4 @@
+<app-loading-overlay [show]="isLoading"></app-loading-overlay>
 <div
   style="
     width: 100vw;
@@ -138,6 +139,7 @@
           background-color: #9c0000;
           color: white;
         "
+        (click)="cancel()"
       >
         Cancelar
       </button>
