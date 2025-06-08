@@ -1,13 +1,13 @@
 import {
-  BidiModule
-} from "./chunk-JDTDKEKM.js";
-import {
   Platform,
   _CdkPrivateStyleLoader,
   _bindEventWithOptions,
   coerceElement,
   coerceNumberProperty
 } from "./chunk-QTJLFK6D.js";
+import {
+  BidiModule
+} from "./chunk-JDTDKEKM.js";
 import {
   DOCUMENT
 } from "./chunk-SLZMMFEY.js";
@@ -3126,11 +3126,13 @@ export {
   BreakpointObserver,
   ObserversModule,
   LiveAnnouncer,
+  A11yModule,
   _IdGenerator,
   hasModifierKey,
   ActiveDescendantKeyManager,
   addAriaReferencedId,
   removeAriaReferencedId,
+  AriaDescriber,
   MatCommonModule
 };
-//# sourceMappingURL=chunk-QVI6JEGP.js.map
+//# sourceMappingURL=chunk-SMN7MEIW.js.map

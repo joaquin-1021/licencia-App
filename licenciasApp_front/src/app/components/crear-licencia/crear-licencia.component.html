@@ -1,4 +1,3 @@
-<app-loading-overlay [show]="isLoading"></app-loading-overlay>
 <div
   style="
     width: 100vw;
@@ -9,6 +8,7 @@
     align-items: center;
   "
 >
+<div style="display: flex; flex-direction: row; gap: 40px; width: 90%; max-width: 1200px">
   <mat-card
     class="login-card"
     style="max-width: 800px; width: 100%"
@@ -21,13 +21,13 @@
         margin-bottom: 30px;
       "
     >
-      <span>Alta titular</span>
+      <span>Crear Licencia</span>
     </mat-toolbar>
 
     <mat-card-content style="display: flex; flex-direction: column; gap: 20px">
       <form
         style="display: flex; flex-direction: column; gap: 20px; width: 100%"
-        [formGroup]="formTitular"
+        [formGroup]="formLicencia"
       >
         <div style="display: flex; gap: 20px; width: 100%">
           <mat-form-field appearance="fill" style="flex: 1">
@@ -103,22 +103,36 @@
 
           <mat-form-field appearance="fill" style="flex: 1">
             <mat-label>Grupo Sanguíneo</mat-label>
-            <mat-select
+            <input
+              matInput
               name="grupoSanguineo"
               placeholder="Ej: A+, B-, O+"
               formControlName="grupoSangre"
-            >
-              <mat-option value="A_POS">A+</mat-option>
-              <mat-option value="A_NEG">A-</mat-option>
-              <mat-option value="B_POS">B+</mat-option>
-              <mat-option value="B_NEG">B-</mat-option>
-              <mat-option value="O_POS">O+</mat-option>
-              <mat-option value="O_NEG">O-</mat-option>
-              <mat-option value="AB_POS">AB+</mat-option>
-              <mat-option value="AB_NEG">AB-</mat-option>
-            </mat-select>
+            />
+          </mat-form-field>
+
+        </div>
+        <div style="display: flex; gap: 20px; width: 100%">
+          <mat-form-field appearance="fill" style="flex: 1">
+            <mat-label>Clase</mat-label>
+            <input
+              matInput
+              name="calse"
+              placeholder="Ej: A, B, C ..."
+              formControlName="clase"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="fill" style="flex: 1">
+            <mat-label>Cuit</mat-label>
+            <input
+              matInput
+              name="cuit"
+              placeholder="Ej: xx-xxxxxxxx-x"
+              formControlName="cuit"
+            />
           </mat-form-field>
         </div>
+
       </form>
     </mat-card-content>
 
@@ -126,19 +140,12 @@
       style="
         display: flex;
         gap: 10px;
-        justify-content: flex-end;
+        justify-content:space-around;
         margin-top: 30px;
         margin-bottom: 30px;
       "
     >
-      <button
-        mat-flat-button
-        color="primary"
-        style="height: 40px; width: 100px"
-        (click)="onSubmit()"
-      >
-        Aceptar
-      </button>
+
       <button
         mat-flat-button
         style="
@@ -151,6 +158,57 @@
       >
         Cancelar
       </button>
+      <button
+        mat-flat-button
+        color="primary"
+        style="height: 40px; width: 100px"
+        (click)="emitirLicencia()"
+      >
+        Emitir
+      </button>
+
     </div>
+
   </mat-card>
+   <div class="licencia-preview">
+        <div>
+
+          <img src="licencia-frontal.png" alt="licencia-frontal" />
+          <input type="file" #inputFile accept="image/*" style="display:none" (change)="onFileSelected($event)" />
+          @if (imagenUrl) {
+            <img [src]="imagenUrl" alt="Imagen seleccionada" class="img_load"  />
+
+          }
+          @if(botonOculto){
+            <button id="boton-superpuesto" class="boton-superpuesto" (click)="cargarImagen(); ocultarBoton()">+</button>
+          }
+
+          <img src="licencia-dorso.png" alt="licencia-dorso" />
+          <img src="qr-cuadrado.png" alt="cuadrado" class="cuadrado">
+          <img src="qr-horizontal.jpg" alt="horiontal" class="horizontal">
+        </div>
+      <div class="licencia-fondo">
+        <div class="campo nombre-label">Nombre</div>
+        <div class="campo nombre">{{ formLicencia.value.nombre }}</div>
+        <div class="campo apellido-label">Apellido</div>
+        <div class="campo apellido">{{ formLicencia.value.apellido }}</div>
+        <div class="campo tipo-doc-label">Tipo</div>
+        <div class="campo tipo-doc">{{ formLicencia.value.tipoDocumento }}</div>
+        <div class="campo nro-doc-label">Nro</div>
+        <div class="campo nro-doc">{{ formLicencia.value.nroDocumento }}</div>
+        <div class="campo fecha-nac-label">Fecha Nac</div>
+        <div class="campo fecha-nac">{{ formLicencia.value.fechaNacimiento }}</div>
+        <div class="campo direccion-label">Direccion</div>
+        <div class="campo direccion">{{ formLicencia.value.direccion }}</div>
+         <div class="campo donante-label">Donante</div>
+        <div class="campo donante">{{ formLicencia.value.donante }}</div>
+         <div class="campo grupo-label">Grupo</div>
+        <div class="campo grupo">{{ formLicencia.value.grupoSangre }}</div>
+         <div class="campo cuit-label">Cuit</div>
+        <div class="campo cuit">{{ formLicencia.value.cuit }}</div>
+         <div class="campo clase-label">Clase</div>
+        <div class="campo clase-lic">{{ formLicencia.value.clase }}</div>
+      </div>
+    </div>
+  </div>
 </div>

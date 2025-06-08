@@ -135,10 +135,10 @@ function getSupportedInputTypes() {
 }
 
 export {
+  _isTestEnvironment,
   RtlScrollAxisType,
   supportsScrollBehavior,
   getRtlScrollAxisType,
-  _isTestEnvironment,
   getSupportedInputTypes
 };
-//# sourceMappingURL=chunk-MXSMMUDT.js.map
+//# sourceMappingURL=chunk-UZARY6NC.js.map

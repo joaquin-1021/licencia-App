@@ -12,7 +12,7 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SnackbarService } from '../../shared/snackbar.service';
 import { LoadingOverlayComponent } from '../loading-overlay/loading-overlay.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-alta-titular',
@@ -30,8 +30,9 @@ export class AltaTitularComponent {
 
   isLoading = false;
   formTitular!: FormGroup;
+  username:any = '';
 
-  constructor(private fb: FormBuilder, private snackbar: SnackbarService, private router:Router) {}
+  constructor(private fb: FormBuilder, private snackbar: SnackbarService, private router:Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.formTitular = this.fb.group({
@@ -43,6 +44,10 @@ export class AltaTitularComponent {
       direccion: [''],
       donante: [''],
       grupoSangre: ['']
+    });
+
+    this.route.paramMap.subscribe(params => {
+      this.username = params.get('username')
     });
   }
 
@@ -78,7 +83,7 @@ export class AltaTitularComponent {
       }
       if (response.status === 201) {
         this.snackbar.open('Titular registrado exitosamente', 'success');
-        this.router.navigate(["menu"])
+        this.router.navigate(["menu", this.username])
       }
     })
     .then(data => {
@@ -93,7 +98,7 @@ export class AltaTitularComponent {
   }
 
   cancel() {
-    this.router.navigate(["menu"])
+    this.router.navigate(["menu", this.username])
   }
 
 

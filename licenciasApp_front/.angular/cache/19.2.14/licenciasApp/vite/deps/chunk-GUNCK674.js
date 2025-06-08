@@ -1,23 +1,19 @@
 import {
   coerceCssPixelValue
-} from "./chunk-IBYU652R.js";
+} from "./chunk-PCQEEKRW.js";
 import {
   RtlScrollAxisType,
   _isTestEnvironment,
   getRtlScrollAxisType,
   supportsScrollBehavior
-} from "./chunk-MXSMMUDT.js";
+} from "./chunk-UZARY6NC.js";
 import {
   ESCAPE,
   _IdGenerator,
   _getEventTarget,
   coerceArray,
   hasModifierKey
-} from "./chunk-QVI6JEGP.js";
-import {
-  BidiModule,
-  Directionality
-} from "./chunk-JDTDKEKM.js";
+} from "./chunk-SMN7MEIW.js";
 import {
   Platform,
   _CdkPrivateStyleLoader,
@@ -25,6 +21,10 @@ import {
   coerceElement,
   coerceNumberProperty
 } from "./chunk-QTJLFK6D.js";
+import {
+  BidiModule,
+  Directionality
+} from "./chunk-JDTDKEKM.js";
 import {
   Location
 } from "./chunk-ULJKLC5B.js";
@@ -5051,6 +5051,7 @@ var FullscreenOverlayContainer = class _FullscreenOverlayContainer extends Overl
 })();
 
 export {
+  ScrollDispatcher,
   ViewportRuler,
   CdkScrollableModule,
   ComponentPortal,
@@ -5064,4 +5065,4 @@ export {
   CdkConnectedOverlay,
   OverlayModule
 };
-//# sourceMappingURL=chunk-D6BESCKE.js.map
+//# sourceMappingURL=chunk-GUNCK674.js.map

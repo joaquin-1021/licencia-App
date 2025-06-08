@@ -14,7 +14,8 @@ export class SnackbarService {
       data: { message, type },
       duration: 3000,
       horizontalPosition: 'right',
-      verticalPosition: 'top'
+      verticalPosition: 'top',
+
     });
   }
 }

@@ -1,0 +1,42 @@
+<app-loading-overlay [show]="loading"></app-loading-overlay>
+
+<div style="width: 100vw; height: 100vh; background: #EEEEEE; display: flex; justify-content: center; align-items: center;">
+  <mat-card style="display: flex; justify-content: space-around; align-items: center; flex-direction: column; padding: 40px">
+      <mat-card-header style="display: flex; justify-content: center; align-items: center; flex-direction: column-reverse; gap: 20px;">
+      </mat-card-header>
+      <mat-card-content style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 20px;">
+          <form #form="ngForm" style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 20px;">
+
+  <mat-form-field style="width: 300px;" [class.mat-form-field-invalid]="usernameInput.invalid && usernameInput.touched">
+    <mat-label>Usuario</mat-label>
+    <input matInput [(ngModel)]="username" name="username" placeholder="Usuario" required #usernameInput="ngModel" />
+    <mat-error *ngIf="usernameInput.invalid && usernameInput.touched">Este campo es obligatorio</mat-error>
+  </mat-form-field>
+
+  <mat-form-field style="width: 300px;" [class.mat-form-field-invalid]="passwordInput.invalid && passwordInput.touched">
+    <mat-label>Contraseña</mat-label>
+    <input matInput [(ngModel)]="password" name="password" placeholder="Contraseña" required [type]="hidePassword ? 'password' : 'text'" #passwordInput="ngModel" />
+    <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" [attr.aria-label]="'Ocultar/Mostrar contraseña'" [attr.aria-pressed]="!hidePassword">
+      <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="passwordInput.invalid && passwordInput.touched">Este campo es obligatorio</mat-error>
+  </mat-form-field>
+
+  <mat-form-field style="width: 300px;" [class.mat-form-field-invalid]="passwordConfirmInput.invalid && passwordConfirmInput.touched || !passwordsMatch()">
+    <mat-label>Confirmar contraseña</mat-label>
+    <input matInput [(ngModel)]="passwordConfirm" name="passwordConfirm" placeholder="Confirmar contraseña" required [type]="hidePasswordConfirm ? 'password' : 'text'" #passwordConfirmInput="ngModel" />
+    <button mat-icon-button matSuffix (click)="togglePasswordConfirmVisibility()" [attr.aria-label]="'Ocultar/Mostrar contraseña'" [attr.aria-pressed]="!hidePasswordConfirm">
+      <mat-icon>{{ hidePasswordConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="passwordConfirmInput.invalid && passwordConfirmInput.touched">Este campo es obligatorio</mat-error>
+    <mat-error *ngIf="password && passwordConfirm && !passwordsMatch()">Las contraseñas no coinciden</mat-error>
+  </mat-form-field>
+
+</form>
+          <div style="display: flex; flex-direction: column; ">
+            <button mat-flat-button style="height: 50px; width: 200px; font-size: 20px; scale: 0.85" (click)="confirmRegister(passwordInput, passwordConfirmInput, usernameInput)">Confirmar</button>
+            <button mat-flat-button style="height: 50px; width: 200px; font-size: 20px; scale: 0.85" (click)="cancel()">Cancelar</button>
+          </div>
+      </mat-card-content>
+    </mat-card>
+</div>
