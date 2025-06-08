@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ISolicitudService {
 
-    public void crearSolicitud(Solicitud solicitud);
+    public Boolean crearSolicitud(Solicitud solicitud);
 
     public Solicitud buscarSolicitud(Long id);
 

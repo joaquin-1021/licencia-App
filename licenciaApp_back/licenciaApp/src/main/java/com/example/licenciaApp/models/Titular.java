@@ -20,6 +20,7 @@ public class Titular {
     private String direccion;
     private GrupoSanguineo grupoSangre;
     private Boolean donante;
+    private Boolean primeraLicencia = false;
 
     @OneToMany(mappedBy = "titular", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Solicitud> solicitudes;
@@ -102,5 +103,13 @@ public class Titular {
 
     public void setSolicitudes(List<Solicitud> solicitudes) {
         this.solicitudes = solicitudes;
+    }
+
+    public Boolean getPrimeraLicencia() {
+        return primeraLicencia;
+    }
+
+    public void setPrimeraLicencia(Boolean primeraLicencia) {
+        this.primeraLicencia = primeraLicencia;
     }
 }

@@ -5,6 +5,8 @@ import com.example.licenciaApp.models.Usuario;
 import com.example.licenciaApp.repository.UsuarioRepository;
 import com.example.licenciaApp.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,16 +22,27 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @PostMapping("/crear")
-    public void crearUsuario(@RequestBody Usuario usuario) {
-        usuarioService.crearUsuario(usuario);
+    public ResponseEntity<String> crearUsuario(@RequestBody Usuario usuario) {
+        Boolean resultado = usuarioService.crearUsuario(usuario);
+
+        if (!resultado) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Ya existe ese usuario."); // 409 Conflict
+        } else {
+            return ResponseEntity.status(HttpStatus.CREATED).body("Usuario creado correctamente."); // 201 Created
+        }
     }
 
     @GetMapping("/login")
-    public Usuario buscarUsuarioPorNombre(
-    @RequestParam String nombre,
-    @RequestParam String password
-    ){
-        return usuarioService.buscarUsuario(nombre, password);
+    public ResponseEntity<String> logIn(
+            @RequestParam String username,
+            @RequestParam String password
+    ) {
+        Usuario usuario = usuarioService.buscarUsuario(username, password);
+
+        if (usuario == null) {
+            // Retorna 409 Not Found si el usuario no existe o la contraseña es incorrecta
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Usuario no encontrado.");
+        }else return ResponseEntity.status(HttpStatus.ACCEPTED).body("Usuario logeado."); // Retorna 202 OK con el usuario si se encuentra
     }
 
     @GetMapping("/{id}/solicitudes")

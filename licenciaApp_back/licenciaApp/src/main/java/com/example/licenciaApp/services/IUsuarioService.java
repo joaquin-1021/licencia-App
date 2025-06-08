@@ -7,10 +7,12 @@ import java.util.List;
 
 public interface IUsuarioService {
 
-    public String crearUsuario(Usuario usuario);
+    public Boolean crearUsuario(Usuario usuario);
 
     public Usuario buscarUsuario(String usuario, String password);
 
     public List<Solicitud> obtenerSolicitudes(Long id);
+
+    public Usuario buscarUsuarioPorNombre(String nombre);
 
 }

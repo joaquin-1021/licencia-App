@@ -11,7 +11,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private String usuario;
+    private String username;
     private String password;
     private Boolean superUsuario = false;
 
@@ -26,12 +26,12 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsername(String usuario) {
+        this.username = usuario;
     }
 
     public String getPassword() {
@@ -57,4 +57,6 @@ public class Usuario {
     public void setSolicitudes(List<Solicitud> solicitudes) {
         this.solicitudes = solicitudes;
     }
+
+
 }

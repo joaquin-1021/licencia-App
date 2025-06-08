@@ -4,7 +4,7 @@ import com.example.licenciaApp.models.Titular;
 
 public interface ITitularService {
 
-    public String crearTitular(Titular titular);
+    public Boolean crearTitular(Titular titular);
 
     public Titular buscarTitular(Integer nroDocumento);
 

@@ -17,8 +17,8 @@ public class Solicitud {
     private Operacion operacion;
     @Enumerated(EnumType.STRING)
     private Clase clase;
-    @JoinColumn(name = "usuario_id")
     @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
     @ManyToOne
     @JoinColumn(name = "titular_id")

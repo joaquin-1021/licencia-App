@@ -16,21 +16,21 @@ public class UsuarioService implements IUsuarioService {
     private UsuarioRepository repository;
 
     @Override
-    public String crearUsuario(Usuario usuario) {
+    public Boolean crearUsuario(Usuario usuario) {
 
-        Optional<Usuario> aux = repository.findByUsuario(usuario.getUsuario());
+        Optional<Usuario> aux = repository.findByUsername(usuario.getUsername());
 
-        if (aux.isPresent()) return "Ya existe ese usuario";
+        if (aux.isPresent()) return false;
         else {
             repository.save(usuario);
-            return "Usuario creado";
+            return true;
         }
 
     }
 
     @Override
     public Usuario buscarUsuario(String usuario, String password) {
-        Optional<Usuario> user = repository.findByUsuario(usuario);
+        Optional<Usuario> user = repository.findByUsername(usuario);
         if (user.isPresent() && user.get().getPassword().equals(password)) return user.get();
         else return null;
     }
@@ -40,5 +40,12 @@ public class UsuarioService implements IUsuarioService {
                 .map(Usuario::getSolicitudes)
                 .orElse(List.of());
     }
+
+    @Override
+    public Usuario buscarUsuarioPorNombre(String nombre) {
+        Optional<Usuario> user = repository.findByUsername(nombre);
+        return user.orElse(null);
+    }
+
 
 }

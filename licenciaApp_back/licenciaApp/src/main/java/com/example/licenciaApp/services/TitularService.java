@@ -14,14 +14,14 @@ public class TitularService implements ITitularService {
     TitularRepository repository;
 
     @Override
-    public String crearTitular(Titular titular) {
+    public Boolean crearTitular(Titular titular) {
 
         Optional<Titular> aux = repository.findByNroDocumento(titular.getNroDocumento());
 
-        if( aux.isPresent()) return "Ya existe un titular con ese documento";
+        if( aux.isPresent()) return false;
         else {
             repository.save(titular);
-            return "Titular creado";
+            return true;
         }
 
     }
