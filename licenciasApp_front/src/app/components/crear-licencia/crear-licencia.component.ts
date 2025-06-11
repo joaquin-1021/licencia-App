@@ -23,10 +23,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './crear-licencia.component.css'
 })
 export class CrearLicenciaComponent {
-  formLicencia!: FormGroup;
-  imagenUrl: string | null = null;
-  botonOculto = true;
-  username:any = "";
+
+  show  =  false
+  formLicencia!: FormGroup
+  imagenUrl: string | null = null
+  botonOculto = true
+  username:any = ""
 
 
   @ViewChild('inputFile') inputFile!: ElementRef<HTMLInputElement>;
@@ -54,7 +56,7 @@ export class CrearLicenciaComponent {
   }
 
   emitirLicencia(){
-
+    this.show = true
   }
   cargarImagen(): void {
     this.inputFile.nativeElement.click();

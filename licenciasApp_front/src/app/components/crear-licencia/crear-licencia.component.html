@@ -8,185 +8,211 @@
     align-items: center;
   "
 >
-<div style="display: flex; flex-direction: row; gap: 40px; width: 90%; max-width: 1200px">
-  <mat-card
-    class="login-card"
-    style="max-width: 800px; width: 100%"
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+      width: 90%;
+      max-width: 1200px;
+      justify-content: center;
+    "
   >
-    <mat-toolbar
-      style="
-        background-color: #015cbb;
-        color: white;
-        width: 100%;
-        margin-bottom: 30px;
-      "
-    >
-      <span>Crear Licencia</span>
-    </mat-toolbar>
-
-    <mat-card-content style="display: flex; flex-direction: column; gap: 20px">
-      <form
-        style="display: flex; flex-direction: column; gap: 20px; width: 100%"
-        [formGroup]="formLicencia"
-      >
-        <div style="display: flex; gap: 20px; width: 100%">
-          <mat-form-field appearance="fill" style="flex: 1">
-            <mat-label>Nombre</mat-label>
-            <input matInput name="Nombre" placeholder="Ingrese su nombre" formControlName="nombre"/>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" style="flex: 1">
-            <mat-label>Apellido</mat-label>
-            <input matInput name="Apellido" placeholder="Ingrese su apellido" formControlName="apellido"/>
-          </mat-form-field>
-        </div>
-
-        <div style="display: flex; gap: 20px; width: 100%">
-          <mat-form-field appearance="fill" style="flex: 1.8">
-            <mat-label>Tipo de Documento</mat-label>
-            <mat-select name="tipodocumento" placeholder="Tipo de Documento" formControlName="tipoDocumento">
-              <mat-option value="DNI">Dni</mat-option>
-              <mat-option value="Cedula">Cédula</mat-option>
-              <mat-option value="Pasaporte">Pasaporte</mat-option>
-              <mat-option value="Civica">Cívica</mat-option>
-              <mat-option value="Enrolamiento">Enrolamiento</mat-option>
-              <mat-option value="Embarque">Embarque</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" style="flex: 1.8">
-            <mat-label>Número de Documento</mat-label>
-            <input
-              matInput
-              name="nrodocumento"
-              placeholder="Ingrese su número de documento"
-              formControlName="nroDocumento"
-            />
-          </mat-form-field>
-        </div>
-
-        <div style="display: flex; gap: 20px; width: 100%">
-          <mat-form-field appearance="fill" style="flex: 1.2">
-            <mat-label>Fecha de Nacimiento</mat-label>
-            <input
-              matInput
-              name="fechaNacimiento"
-              placeholder="DD/MM/AAAA"
-              type="date"
-              formControlName="fechaNacimiento"
-            />
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" style="flex: 2">
-            <mat-label>Dirección</mat-label>
-            <input
-              matInput
-              name="direccion"
-              placeholder="Ingrese su dirección"
-              formControlName="direccion"
-            />
-          </mat-form-field>
-        </div>
-
-        <div style="display: flex; gap: 20px; width: 100%">
-          <mat-form-field appearance="fill" style="flex: 1">
-            <mat-label>Donante de órganos</mat-label>
-            <mat-select
-              name="donanteDeOrganos"
-              placeholder="Donante de órganos"
-              formControlName="donante"
-            >
-              <mat-option value="Si">Sí</mat-option>
-              <mat-option value="No">No</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" style="flex: 1">
-            <mat-label>Grupo Sanguíneo</mat-label>
-            <input
-              matInput
-              name="grupoSanguineo"
-              placeholder="Ej: A+, B-, O+"
-              formControlName="grupoSangre"
-            />
-          </mat-form-field>
-
-        </div>
-        <div style="display: flex; gap: 20px; width: 100%">
-          <mat-form-field appearance="fill" style="flex: 1">
-            <mat-label>Clase</mat-label>
-            <input
-              matInput
-              name="calse"
-              placeholder="Ej: A, B, C ..."
-              formControlName="clase"
-            />
-          </mat-form-field>
-          <mat-form-field appearance="fill" style="flex: 1">
-            <mat-label>Cuit</mat-label>
-            <input
-              matInput
-              name="cuit"
-              placeholder="Ej: xx-xxxxxxxx-x"
-              formControlName="cuit"
-            />
-          </mat-form-field>
-        </div>
-
-      </form>
-    </mat-card-content>
-
-    <div
-      style="
-        display: flex;
-        gap: 10px;
-        justify-content:space-around;
-        margin-top: 30px;
-        margin-bottom: 30px;
-      "
-    >
-
-      <button
-        mat-flat-button
+    <mat-card class="login-card" style="max-width: 800px; width: 100%">
+      <mat-toolbar
         style="
-          height: 40px;
-          width: 100px;
-          background-color: #9c0000;
+          background-color: #015cbb;
           color: white;
+          width: 100%;
+          margin-bottom: 30px;
         "
-        (click)="cancel()"
       >
-        Cancelar
-      </button>
-      <button
-        mat-flat-button
-        color="primary"
-        style="height: 40px; width: 100px"
-        (click)="emitirLicencia()"
+        <span>Crear Licencia</span>
+      </mat-toolbar>
+
+      <mat-card-content
+        style="display: flex; flex-direction: column; gap: 20px"
       >
-        Emitir
-      </button>
+        <form
+          style="display: flex; flex-direction: column; gap: 20px; width: 100%"
+          [formGroup]="formLicencia"
+        >
+          <div style="display: flex; gap: 20px; width: 100%">
+            <mat-form-field appearance="fill" style="flex: 1">
+              <mat-label>Nombre</mat-label>
+              <input
+                matInput
+                name="Nombre"
+                placeholder="Ingrese su nombre"
+                formControlName="nombre"
+              />
+            </mat-form-field>
 
-    </div>
+            <mat-form-field appearance="fill" style="flex: 1">
+              <mat-label>Apellido</mat-label>
+              <input
+                matInput
+                name="Apellido"
+                placeholder="Ingrese su apellido"
+                formControlName="apellido"
+              />
+            </mat-form-field>
+          </div>
 
-  </mat-card>
-   <div class="licencia-preview">
-        <div>
+          <div style="display: flex; gap: 20px; width: 100%">
+            <mat-form-field appearance="fill" style="flex: 1.8">
+              <mat-label>Tipo de Documento</mat-label>
+              <mat-select
+                name="tipodocumento"
+                placeholder="Tipo de Documento"
+                formControlName="tipoDocumento"
+              >
+                <mat-option value="DNI">Dni</mat-option>
+                <mat-option value="Cedula">Cédula</mat-option>
+                <mat-option value="Pasaporte">Pasaporte</mat-option>
+                <mat-option value="Civica">Cívica</mat-option>
+                <mat-option value="Enrolamiento">Enrolamiento</mat-option>
+                <mat-option value="Embarque">Embarque</mat-option>
+              </mat-select>
+            </mat-form-field>
 
-          <img src="licencia-frontal.png" alt="licencia-frontal" />
-          <input type="file" #inputFile accept="image/*" style="display:none" (change)="onFileSelected($event)" />
-          @if (imagenUrl) {
-            <img [src]="imagenUrl" alt="Imagen seleccionada" class="img_load"  />
+            <mat-form-field appearance="fill" style="flex: 1.8">
+              <mat-label>Número de Documento</mat-label>
+              <input
+                matInput
+                name="nrodocumento"
+                placeholder="Ingrese su número de documento"
+                formControlName="nroDocumento"
+              />
+            </mat-form-field>
+          </div>
 
-          }
-          @if(botonOculto){
-            <button id="boton-superpuesto" class="boton-superpuesto" (click)="cargarImagen(); ocultarBoton()">+</button>
-          }
+          <div style="display: flex; gap: 20px; width: 100%">
+            <mat-form-field appearance="fill" style="flex: 1.2">
+              <mat-label>Fecha de Nacimiento</mat-label>
+              <input
+                matInput
+                name="fechaNacimiento"
+                placeholder="DD/MM/AAAA"
+                type="date"
+                formControlName="fechaNacimiento"
+              />
+            </mat-form-field>
 
-          <img src="licencia-dorso.png" alt="licencia-dorso" />
-          <img src="qr-cuadrado.png" alt="cuadrado" class="cuadrado">
-          <img src="qr-horizontal.jpg" alt="horiontal" class="horizontal">
-        </div>
+            <mat-form-field appearance="fill" style="flex: 2">
+              <mat-label>Dirección</mat-label>
+              <input
+                matInput
+                name="direccion"
+                placeholder="Ingrese su dirección"
+                formControlName="direccion"
+              />
+            </mat-form-field>
+          </div>
+
+          <div style="display: flex; gap: 20px; width: 100%">
+            <mat-form-field appearance="fill" style="flex: 1">
+              <mat-label>Donante de órganos</mat-label>
+              <mat-select
+                name="donanteDeOrganos"
+                placeholder="Donante de órganos"
+                formControlName="donante"
+              >
+                <mat-option value="Si">Sí</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" style="flex: 1">
+              <mat-label>Grupo Sanguíneo</mat-label>
+              <input
+                matInput
+                name="grupoSanguineo"
+                placeholder="Ej: A+, B-, O+"
+                formControlName="grupoSangre"
+              />
+            </mat-form-field>
+          </div>
+          <div style="display: flex; gap: 20px; width: 100%">
+            <mat-form-field appearance="fill" style="flex: 1">
+              <mat-label>Clase</mat-label>
+              <input
+                matInput
+                name="calse"
+                placeholder="Ej: A, B, C ..."
+                formControlName="clase"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill" style="flex: 1">
+              <mat-label>Cuit</mat-label>
+              <input
+                matInput
+                name="cuit"
+                placeholder="Ej: xx-xxxxxxxx-x"
+                formControlName="cuit"
+              />
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-card-content>
+
+      <div
+        style="
+          display: flex;
+          gap: 10px;
+          justify-content: space-around;
+          margin-top: 30px;
+          margin-bottom: 30px;
+        "
+      >
+        <button
+          mat-flat-button
+          style="
+            height: 40px;
+            width: 100px;
+            background-color: #9c0000;
+            color: white;
+          "
+          (click)="cancel()"
+        >
+          Cancelar
+        </button>
+        <button
+          mat-flat-button
+          color="primary"
+          style="height: 40px; width: 100px"
+          (click)="emitirLicencia()"
+        >
+          Emitir
+        </button>
+      </div>
+    </mat-card>
+    @if(show){
+    <div class="licencia-preview">
+      <div>
+        <img src="licencia-frontal.png" alt="licencia-frontal" />
+        <input
+          type="file"
+          #inputFile
+          accept="image/*"
+          style="display: none"
+          (change)="onFileSelected($event)"
+        />
+        @if (imagenUrl) {
+        <img [src]="imagenUrl" alt="Imagen seleccionada" class="img_load" />
+        }
+        <button
+          id="boton-superpuesto"
+          class="boton-superpuesto"
+          (click)="cargarImagen(); ocultarBoton()"
+        >
+          +
+        </button>
+
+        <img src="licencia-dorso.png" alt="licencia-dorso" />
+        <img src="qr-cuadrado.png" alt="cuadrado" class="cuadrado" />
+        <img src="qr-horizontal.jpg" alt="horiontal" class="horizontal" />
+      </div>
       <div class="licencia-fondo">
         <div class="campo nombre-label">Nombre</div>
         <div class="campo nombre">{{ formLicencia.value.nombre }}</div>
@@ -197,18 +223,23 @@
         <div class="campo nro-doc-label">Nro</div>
         <div class="campo nro-doc">{{ formLicencia.value.nroDocumento }}</div>
         <div class="campo fecha-nac-label">Fecha Nac</div>
-        <div class="campo fecha-nac">{{ formLicencia.value.fechaNacimiento }}</div>
+        <div class="campo fecha-nac">
+          {{ formLicencia.value.fechaNacimiento }}
+        </div>
         <div class="campo direccion-label">Direccion</div>
         <div class="campo direccion">{{ formLicencia.value.direccion }}</div>
-         <div class="campo donante-label">Donante</div>
+        <div class="campo donante-label">Donante</div>
         <div class="campo donante">{{ formLicencia.value.donante }}</div>
-         <div class="campo grupo-label">Grupo</div>
+        <div class="campo grupo-label">Grupo</div>
         <div class="campo grupo">{{ formLicencia.value.grupoSangre }}</div>
-         <div class="campo cuit-label">Cuit</div>
+        <div class="campo cuit-label">Cuit</div>
         <div class="campo cuit">{{ formLicencia.value.cuit }}</div>
-         <div class="campo clase-label">Clase</div>
+        <div class="campo clase-label">Clase</div>
         <div class="campo clase-lic">{{ formLicencia.value.clase }}</div>
       </div>
+       <button mat-flat-button style="margin-top: 33px; margin-left: 172px;">Imprimir</button>
     </div>
+
+    }
   </div>
 </div>
