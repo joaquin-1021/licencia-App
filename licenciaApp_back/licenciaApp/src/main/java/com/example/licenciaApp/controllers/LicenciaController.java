@@ -25,7 +25,6 @@ public class LicenciaController {
     private ResponseEntity<String> crearLicencia(@RequestBody AltaLicenciaDTO licencia) {
         if(licenciaService.crearLicencia(licencia)) return ResponseEntity.status(HttpStatus.CREATED).body("Licencia creada correctamente");
         else return ResponseEntity.status(HttpStatus.CONFLICT).body("Error al crear licencia");
-
     }
 
 }

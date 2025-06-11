@@ -50,7 +50,7 @@ public class LicenciaService implements ILicenciaService {
 
         // Calcular fecha de vencimiento según edad, primera vez, etc.
         LocalDate vencimiento = calcularVigencia(titular, licenciaDto.getLicencia().getClase());
-        //solicitud.setFechaVencimiento(vencimiento);
+        licencia.setFechaVencimiento(vencimiento);
         System.out.println("Fecha de vencimiento" + vencimiento.toString());
 
         // Calcular años de vigencia
