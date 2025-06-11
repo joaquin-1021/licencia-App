@@ -1,5 +1,9 @@
-package com.example.licenciaApp.models;
+package com.example.licenciaApp.deleted;
 
+import com.example.licenciaApp.deleted.models.Clase;
+import com.example.licenciaApp.deleted.models.Operacion;
+import com.example.licenciaApp.deleted.models.Titular;
+import com.example.licenciaApp.deleted.models.Usuario;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

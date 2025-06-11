@@ -1,5 +1,6 @@
-package com.example.licenciaApp.models;
+package com.example.licenciaApp.deleted.models;
 
+import com.example.licenciaApp.deleted.Solicitud;
 import jakarta.persistence.*;
 
 import java.util.List;

@@ -1,10 +1,10 @@
-package com.example.licenciaApp.services;
+package com.example.licenciaApp.deleted;
 
-import com.example.licenciaApp.models.Clase;
-import com.example.licenciaApp.models.Solicitud;
-import com.example.licenciaApp.models.Titular;
-import com.example.licenciaApp.models.Usuario;
-import com.example.licenciaApp.repository.SolicitudRepository;
+import com.example.licenciaApp.deleted.models.Clase;
+import com.example.licenciaApp.deleted.models.Titular;
+import com.example.licenciaApp.deleted.models.Usuario;
+import com.example.licenciaApp.services.TitularService;
+import com.example.licenciaApp.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

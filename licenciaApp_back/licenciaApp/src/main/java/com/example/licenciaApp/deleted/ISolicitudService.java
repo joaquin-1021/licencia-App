@@ -1,8 +1,4 @@
-package com.example.licenciaApp.services;
-
-import com.example.licenciaApp.models.Solicitud;
-
-import java.util.List;
+package com.example.licenciaApp.deleted;
 
 public interface ISolicitudService {
 

@@ -1,7 +1,7 @@
 package com.example.licenciaApp.controllers;
 
-import com.example.licenciaApp.models.Solicitud;
-import com.example.licenciaApp.models.Usuario;
+import com.example.licenciaApp.deleted.Solicitud;
+import com.example.licenciaApp.deleted.models.Usuario;
 import com.example.licenciaApp.repository.UsuarioRepository;
 import com.example.licenciaApp.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;

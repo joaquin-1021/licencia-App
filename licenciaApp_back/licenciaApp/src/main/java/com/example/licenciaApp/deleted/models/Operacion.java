@@ -1,4 +1,4 @@
-package com.example.licenciaApp.models;
+package com.example.licenciaApp.deleted.models;
 
 public enum Operacion {
     renovacion,
