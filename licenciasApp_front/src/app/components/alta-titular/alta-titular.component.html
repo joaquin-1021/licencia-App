@@ -1,3 +1,4 @@
+<app-loading-overlay [show]="isLoading"></app-loading-overlay>
 <div
   style="
     width: 100vw;
@@ -102,12 +103,20 @@
 
           <mat-form-field appearance="fill" style="flex: 1">
             <mat-label>Grupo Sanguíneo</mat-label>
-            <input
-              matInput
+            <mat-select
               name="grupoSanguineo"
               placeholder="Ej: A+, B-, O+"
               formControlName="grupoSangre"
-            />
+            >
+              <mat-option value="A_POS">A+</mat-option>
+              <mat-option value="A_NEG">A-</mat-option>
+              <mat-option value="B_POS">B+</mat-option>
+              <mat-option value="B_NEG">B-</mat-option>
+              <mat-option value="O_POS">O+</mat-option>
+              <mat-option value="O_NEG">O-</mat-option>
+              <mat-option value="AB_POS">AB+</mat-option>
+              <mat-option value="AB_NEG">AB-</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </form>
@@ -138,6 +147,7 @@
           background-color: #9c0000;
           color: white;
         "
+        (click)="cancel()"
       >
         Cancelar
       </button>

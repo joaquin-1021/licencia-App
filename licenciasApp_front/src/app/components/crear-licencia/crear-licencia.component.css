@@ -1,0 +1,145 @@
+.licencia-preview img {
+    width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.licencia-preview {
+  width: 750px;
+  height: 250px;
+  position: relative;
+  background-size: cover;
+
+}
+.licencia-fondo{
+    display: flex;
+    flex-direction:row-reverse;
+}
+.licencia-preview .campo {
+  position: absolute;
+  color: #000;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+.boton-superpuesto {
+  position: absolute;
+  top: 108px;
+  right: 360px;
+  padding: 8px 12px;
+  background-color: rgb(250, 248, 248);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.boton-superpuesto:hover {
+    background-color: rgb(196, 196, 196);
+    cursor: pointer;
+}
+.img_load{
+    position: absolute;
+    top: 65px;
+    right: 320px;
+    max-width: 100px;
+    max-height: 120px;
+    background-size: cover;
+    border-radius: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+.cuadrado{
+    position: absolute;
+    max-width: 90px;
+    max-height: 90px;
+    top: 284px;
+    left: 35px;
+}
+.horizontal{
+    position: absolute;
+    max-width: 350px;
+    max-height: 70px;
+    top:465px;
+    left: 50px;
+}
+.apellido-label{
+    top: 70px;
+    left: 145px;
+}
+.apellido {
+  top: 90px;
+  left: 150px;
+}
+.nombre-label{
+    top: 110px;
+    left: 145px;
+}
+.nombre {
+  top: 130px;
+  left: 150px;
+}
+.tipo-doc-label {
+    top: 150px;
+    left: 145px;
+}
+.tipo-doc {
+  top: 170px;
+  left: 150px;
+}
+.nro-doc-label {
+  top: 70px;
+  left: 255px;
+}
+.nro-doc {
+  top: 90px;
+  left: 260px;
+}
+.fecha-nac-label {
+  top: 190px;
+  left: 145px;
+}
+.fecha-nac {
+  top: 210px;
+  left: 150px;
+}
+.direccion-label {
+  top: 150px;
+  left: 255px;
+  max-width: 350px;
+}
+.direccion {
+  top: 170px;
+  left: 260px;
+  max-width: 350px;
+}
+.donante-label {
+  top: 400px;
+  left: 150px;
+}
+.donante {
+  top: 420px;
+  left: 155px;
+}
+.grupo-label {
+  top: 400px;
+  left: 245px;
+}
+.grupo {
+  top: 420px;
+  left: 250px;
+}
+.cuit{
+  top: 420px;
+  left: 335px;
+}
+.cuit-label{
+  top: 400px;
+  left: 330px;
+}
+.clase-lic{
+  top: 340px;
+  left: 325px;
+}
+.clase-label{
+  top: 320px;
+  left: 320px;
+}

@@ -10,6 +10,9 @@ import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/select';
 import { MatToolbar } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SnackbarService } from '../../shared/snackbar.service';
+import { LoadingOverlayComponent } from '../loading-overlay/loading-overlay.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-alta-titular',
@@ -19,15 +22,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatIcon,
     FormsModule,
-    HttpClientModule, MatSelect, MatOption, MatToolbar, ReactiveFormsModule],
+    HttpClientModule, MatSelect, MatOption, MatToolbar, ReactiveFormsModule, LoadingOverlayComponent],
   templateUrl: './alta-titular.component.html',
   styleUrl: './alta-titular.component.css'
 })
 export class AltaTitularComponent {
 
+  isLoading = false;
   formTitular!: FormGroup;
+  username:any = '';
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private snackbar: SnackbarService, private router:Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.formTitular = this.fb.group({
@@ -39,6 +44,10 @@ export class AltaTitularComponent {
       direccion: [''],
       donante: [''],
       grupoSangre: ['']
+    });
+
+    this.route.paramMap.subscribe(params => {
+      this.username = params.get('username')
     });
   }
 
@@ -56,6 +65,7 @@ export class AltaTitularComponent {
     }
 
     console.log(body)
+    this.isLoading = true;
 
     fetch('http://152.170.128.205:8080/titular/crear', {
       method: 'POST',
@@ -65,18 +75,32 @@ export class AltaTitularComponent {
       body: JSON.stringify(body)
     })
     .then(response => {
-      if (!response.ok) {
-        throw new Error('Error al enviar el formulario');
+      if (response.status === 409) {
+        this.snackbar.open('El titular ya existe', 'error')
+      }
+      if (response.status === 500) {
+        this.snackbar.open('Error de servidor', 'error')
+      }
+      if (response.status === 201) {
+        this.snackbar.open('Titular registrado exitosamente', 'success');
+        this.router.navigate(["menu", this.username])
       }
     })
     .then(data => {
       console.log('Respuesta del servidor:', data);
     })
     .catch(error => {
+      this.snackbar.open('Error', 'error')
       console.error('Error en la petición:', error);
+    }).finally(() => {
+      this.isLoading = false;
     });
-
   }
+
+  cancel() {
+    this.router.navigate(["menu", this.username])
+  }
+
 
 //   {
 //   "tipoDocumento":  "DNI",
