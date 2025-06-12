@@ -12,13 +12,16 @@ type Product = {
 
 const generatePDF = (
   imagenDorso:string,
-  imagenFrontal:string
+  imagenFrontal:string,
+  imagenCuadrado:string,
+  imagenHorizonal:string,
+  datosFormulario:Object
 ) => {
-
 
 
   const content: any[] = [];
 
+  
 
   content.push({
   stack: [
@@ -27,7 +30,6 @@ const generatePDF = (
       width: 300,
       margin: [0, 40, 0, 0]
     },
-
     {
       text: 'Apellido',
       absolutePosition: { x: 130, y: 125 },
@@ -96,48 +98,174 @@ const generatePDF = (
 
     {
       text: 'Clase',
-      absolutePosition: { x: 130, y: 200 },
+      absolutePosition: { x: 255, y: 300 },
       color: 'black',
       fontSize: 10,
       bold: true,
       fillColor: 'rgba(39,55,70)',
       margin: [0, -40, 0, 0]
     },
+    {
+      text: 'Donante',
+      absolutePosition: { x: 130, y: 355 },
+      color: 'black',
+      fontSize: 10,
+      bold: true,
+      fillColor: 'rgba(39,55,70)',
+      margin: [0, -40, 0, 0]
+    },
+    {
+      text: 'Grupo',
+      absolutePosition: { x: 200, y: 355 },
+      color: 'black',
+      fontSize: 10,
+      bold: true,
+      fillColor: 'rgba(39,55,70)',
+      margin: [0, -40, 0, 0]
+    },
+    {
+      text: 'Cuit',
+      absolutePosition: { x: 255, y: 355 },
+      color: 'black',
+      fontSize: 10,
+      bold: true,
+      fillColor: 'rgba(39,55,70)',
+      margin: [0, -40, 0, 0]
+    },
+    
+    {
+      image: imagenCuadrado,
+      absolutePosition: { x: 65, y: 280 },
+      width: 58,
+    },
+    {
+      image: imagenHorizonal,
+      absolutePosition: { x: 70, y: 400 },
+      width: 240,
+      height: 54
+    },
+
 
   ]
-});
+  });
 
-
-
-  content.push({ text: "\n" });
-
-
-
-
-  const styles = {
-    header: {
-      fontSize: 14,
-      bold: true,
-    },
-    subheader: {
-      fontSize: 12,
-      margin: [0, 5, 0, 5],
-    },
-    tableHeader: {
-      bold: true,
-      fontSize: 12,
-      color: "black",
-    },
-    total: {
-      fontSize: 12,
-      bold: true,
-    },
-  };
+  for (const [clave, valor] of Object.entries(datosFormulario)) {
+    if(clave == 'nombre'){
+      content.push({
+        text: `${valor}`,
+        absolutePosition: { x: 132, y: 160 },
+        color: 'black',
+        fontSize: 10,
+        bold: true,
+        fillColor: 'rgba(39,55,70)',
+        margin: [0, -40, 0, 0]
+      });
+    }
+    if(clave == 'apellido'){
+      content.push({
+        text: `${valor}`,
+        absolutePosition: { x: 132, y: 135 },
+        color: 'black',
+        fontSize: 10,
+        bold: true,
+        fillColor: 'rgba(39,55,70)',
+        margin: [0, -40, 0, 0]
+      });
+    }
+    if(clave == 'tipoDocumento'){
+      content.push({
+        text: `${valor}`,
+        absolutePosition: { x: 132, y: 185 },
+        color: 'black',
+        fontSize: 10,
+        bold: true,
+        fillColor: 'rgba(39,55,70)',
+        margin: [0, -40, 0, 0]
+      });
+    }
+    if(clave == 'nroDocumento'){
+      content.push({
+        text: `${valor}`,
+        absolutePosition: { x: 212, y: 135 },
+        color: 'black',
+        fontSize: 10,
+        bold: true,
+        fillColor: 'rgba(39,55,70)',
+        margin: [0, -40, 0, 0]
+      });
+    }
+    if(clave == 'fechaNacimiento'){
+      content.push({
+        text: `${valor}`,
+        absolutePosition: { x: 132, y: 210 },
+        color: 'black',
+        fontSize: 10,
+        bold: true,
+        fillColor: 'rgba(39,55,70)',
+        margin: [0, -40, 0, 0]
+      });
+    }
+    if(clave == 'direccion'){
+      content.push({
+        text: `${valor}`,
+        absolutePosition: { x: 212, y: 185 },
+        color: 'black',
+        fontSize: 10,
+        bold: true,
+        fillColor: 'rgba(39,55,70)',
+        margin: [0, -40, 0, 0]
+      });
+    }
+    if(clave == 'donante'){
+      content.push({
+        text: `${valor}`,
+        absolutePosition: { x: 132, y: 365 },
+        color: 'black',
+        fontSize: 10,
+        bold: true,
+        fillColor: 'rgba(39,55,70)',
+        margin: [0, -40, 0, 0]
+      });
+    }
+    if(clave == 'grupoSangre'){
+      content.push({
+        text: `${valor}`,
+        absolutePosition: { x: 202, y: 365 },
+        color: 'black',
+        fontSize: 10,
+        bold: true,
+        fillColor: 'rgba(39,55,70)',
+        margin: [0, -40, 0, 0]
+      });
+    }
+    if(clave == 'clase'){
+      content.push({
+        text: `${valor}`,
+        absolutePosition: { x: 257, y: 310 },
+        color: 'black',
+        fontSize: 10,
+        bold: true,
+        fillColor: 'rgba(39,55,70)',
+        margin: [0, -40, 0, 0]
+      });
+    }
+    if(clave == 'cuit'){
+      content.push({
+        text: `${valor}`,
+        absolutePosition: { x: 257, y: 365 },
+        color: 'black',
+        fontSize: 10,
+        bold: true,
+        fillColor: 'rgba(39,55,70)',
+        margin: [0, -40, 0, 0]
+      });
+    }
+    
+  }
 
 
   const docDefinition: any = {
-    content,
-    styles,
+    content
   };
 
   pdfMake.createPdf(docDefinition).open();
