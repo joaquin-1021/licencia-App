@@ -1,6 +1,6 @@
 package com.example.licenciaApp.repository;
 
-import com.example.licenciaApp.deleted.models.Titular;
+import com.example.licenciaApp.models.Titular;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

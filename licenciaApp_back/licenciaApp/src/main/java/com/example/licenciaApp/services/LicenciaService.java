@@ -1,10 +1,10 @@
 package com.example.licenciaApp.services;
 
 import com.example.licenciaApp.dto.AltaLicenciaDTO;
-import com.example.licenciaApp.deleted.models.Clase;
-import com.example.licenciaApp.deleted.models.Licencia;
-import com.example.licenciaApp.deleted.models.Titular;
-import com.example.licenciaApp.deleted.models.Usuario;
+import com.example.licenciaApp.models.Clase;
+import com.example.licenciaApp.models.Licencia;
+import com.example.licenciaApp.models.Titular;
+import com.example.licenciaApp.models.Usuario;
 import com.example.licenciaApp.repository.LicenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.YearMonth;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class LicenciaService implements ILicenciaService {
@@ -46,6 +48,17 @@ public class LicenciaService implements ILicenciaService {
         Usuario usuario = usuarioService.buscarUsuarioPorNombre(licenciaDto.getUsuario().getUsername());
         if (titular == null || usuario == null) return false;
 
+        /* CHEQUEO CLASE C, D y E */
+        if (licenciaDto.getLicencia().getClase() == Clase.C
+            || licenciaDto.getLicencia().getClase() == Clase.D
+            || licenciaDto.getLicencia().getClase() == Clase.E)
+        {
+            Integer edad = Period.between(titular.getFechaNacimiento(), LocalDate.now()).getYears();
+            if(edad > 65 || edad < 21) return null;
+            Licencia licenciaB = titular.getLicencia().stream().filter(l -> l.getClase() == Clase.B).findFirst().orElse(null);
+            if(licenciaB == null || Period.between(licenciaB.getFechaEmision(), LocalDate.now()).getYears() < 1) return null;
+        } else if(Period.between(titular.getFechaNacimiento(), LocalDate.now()).getYears() < 17) return null;
+
         licencia.setTitular(titular);
 
         // Calcular fecha de vencimiento según edad, primera vez, etc.
@@ -65,6 +78,7 @@ public class LicenciaService implements ILicenciaService {
 
         // Costo final
         Double costoFinal = (double) (costoBase + COSTO_ADMINISTRATIVO);
+        licencia.setCosto(costoFinal);
 
         licenciaRepository.save(licencia);
         return true;

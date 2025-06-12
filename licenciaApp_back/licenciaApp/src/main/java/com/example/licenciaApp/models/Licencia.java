@@ -1,4 +1,4 @@
-package com.example.licenciaApp.deleted.models;
+package com.example.licenciaApp.models;
 
 import jakarta.persistence.*;
 
@@ -12,12 +12,14 @@ public class Licencia {
     private Long id;
 
     private Clase clase;
+    private LocalDate fechaEmision;
     private LocalDate fechaVencimiento;
     private String observaciones;
     private String cuit;
     private Double costo;
 
-    @OneToOne(mappedBy = "licencia")
+    @ManyToOne
+    @JoinColumn(name = "titular_id", nullable = false)
     private Titular titular;
 
     public Long getId() {
@@ -74,5 +76,13 @@ public class Licencia {
 
     public void setCosto(Double costo) {
         this.costo = costo;
+    }
+
+    public LocalDate getFechaEmision() {
+        return fechaEmision;
+    }
+
+    public void setFechaEmision(LocalDate fechaEmision) {
+        this.fechaEmision = fechaEmision;
     }
 }

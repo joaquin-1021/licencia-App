@@ -1,4 +1,4 @@
-package com.example.licenciaApp.deleted.models;
+package com.example.licenciaApp.models;
 
 public enum TipoDocumento {
     DNI, Cedula, Pasaporte, Civica, Enrolamiento, Embarque

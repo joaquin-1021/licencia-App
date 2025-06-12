@@ -1,4 +1,4 @@
-package com.example.licenciaApp.deleted.models;
+package com.example.licenciaApp.models;
 
 import com.example.licenciaApp.deleted.Solicitud;
 import jakarta.persistence.*;

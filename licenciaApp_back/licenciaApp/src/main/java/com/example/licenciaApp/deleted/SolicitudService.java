@@ -1,8 +1,8 @@
 package com.example.licenciaApp.deleted;
 
-import com.example.licenciaApp.deleted.models.Clase;
-import com.example.licenciaApp.deleted.models.Titular;
-import com.example.licenciaApp.deleted.models.Usuario;
+import com.example.licenciaApp.models.Clase;
+import com.example.licenciaApp.models.Titular;
+import com.example.licenciaApp.models.Usuario;
 import com.example.licenciaApp.services.TitularService;
 import com.example.licenciaApp.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;

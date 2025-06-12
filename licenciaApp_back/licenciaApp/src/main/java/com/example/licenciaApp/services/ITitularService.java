@@ -1,6 +1,6 @@
 package com.example.licenciaApp.services;
 
-import com.example.licenciaApp.deleted.models.Titular;
+import com.example.licenciaApp.models.Titular;
 
 public interface ITitularService {
 

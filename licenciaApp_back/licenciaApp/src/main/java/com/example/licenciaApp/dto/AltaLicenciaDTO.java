@@ -1,8 +1,8 @@
 package com.example.licenciaApp.dto;
 
-import com.example.licenciaApp.deleted.models.Licencia;
-import com.example.licenciaApp.deleted.models.Titular;
-import com.example.licenciaApp.deleted.models.Usuario;
+import com.example.licenciaApp.models.Licencia;
+import com.example.licenciaApp.models.Titular;
+import com.example.licenciaApp.models.Usuario;
 
 public class AltaLicenciaDTO {
 

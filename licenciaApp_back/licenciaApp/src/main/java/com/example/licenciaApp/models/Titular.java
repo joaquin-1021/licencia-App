@@ -1,8 +1,9 @@
-package com.example.licenciaApp.deleted.models;
+package com.example.licenciaApp.models;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Titular {
@@ -21,8 +22,8 @@ public class Titular {
     private Boolean donante;
     private Boolean primeraLicencia = false;
 
-    @OneToOne(mappedBy = "titular")
-    private Licencia licencia;
+    @OneToMany(mappedBy = "titular", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Licencia> licencia;
 
     public Long getId() {
         return id;
@@ -104,11 +105,11 @@ public class Titular {
         this.primeraLicencia = primeraLicencia;
     }
 
-    public Licencia getLicencia() {
+    public List<Licencia> getLicencia() {
         return licencia;
     }
 
-    public void setLicencia(Licencia licencia) {
+    public void setLicencia(List<Licencia> licencia) {
         this.licencia = licencia;
     }
 }

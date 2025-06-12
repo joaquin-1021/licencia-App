@@ -1,6 +1,6 @@
 package com.example.licenciaApp.controllers;
 
-import com.example.licenciaApp.deleted.models.Titular;
+import com.example.licenciaApp.models.Titular;
 import com.example.licenciaApp.services.TitularService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
