@@ -190,7 +190,7 @@
     @if(show){
     <div class="licencia-preview">
       <div>
-        <img src="licencia-frontal.png" alt="licencia-frontal" />
+        <img src="assets/licencia-frontal.png" alt="licencia-frontal" />
         <input
           type="file"
           #inputFile
@@ -209,7 +209,7 @@
           +
         </button>
 
-        <img src="licencia-dorso.png" alt="licencia-dorso" />
+        <img src="assets/licencia-dorso.png" alt="licencia-dorso" />
         <img src="qr-cuadrado.png" alt="cuadrado" class="cuadrado" />
         <img src="qr-horizontal.jpg" alt="horiontal" class="horizontal" />
       </div>
@@ -237,7 +237,7 @@
         <div class="campo clase-label">Clase</div>
         <div class="campo clase-lic">{{ formLicencia.value.clase }}</div>
       </div>
-       <button mat-flat-button style="margin-top: 33px; margin-left: 172px;">Imprimir</button>
+       <button mat-flat-button style="margin-top: 33px; margin-left: 172px;" (click)="generarPDF()">Imprimir</button>
     </div>
 
     }
