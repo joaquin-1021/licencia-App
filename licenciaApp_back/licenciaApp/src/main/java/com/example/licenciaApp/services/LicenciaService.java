@@ -42,11 +42,20 @@ public class LicenciaService implements ILicenciaService {
     @Override
     public Boolean crearLicencia(AltaLicenciaDTO licenciaDto) {
 
-        Licencia licencia = new Licencia();
+        // Todos los datos de la licencia vienen del front, solo debo calcular costos, vigencia y si es posible que el titular saque dicha licencia
+        // todos los campos vienen llenos excepto costo, fecha de vencimiento, fecha de emision
+
+        Licencia licencia = licenciaDto.getLicencia();
+        licencia.setFechaEmision(LocalDate.now());
 
         Titular titular = titularService.buscarTitular(licenciaDto.getTitular().getNroDocumento());
         Usuario usuario = usuarioService.buscarUsuarioPorNombre(licenciaDto.getUsuario().getUsername());
         if (titular == null || usuario == null) return false;
+
+        licencia.setTitular(titular);
+
+        // Verificar que ya no tenga una licencia de dicha clase
+        if(licenciaVigente(titular, licenciaDto.getLicencia().getClase())) return false;
 
         /* CHEQUEO CLASE C, D y E */
         if (licenciaDto.getLicencia().getClase() == Clase.C
@@ -125,5 +134,14 @@ public class LicenciaService implements ILicenciaService {
         }
 
         return vencimiento;
+    }
+
+    public Boolean licenciaVigente(Titular titular, Clase clase) {
+        List<Licencia> licencias = titular.getLicencia();
+        return licencias.stream()
+                .anyMatch(licencia ->
+                        licencia.getClase() == clase &&
+                                !licencia.getFechaVencimiento().isBefore(LocalDate.now())
+                );
     }
 }
